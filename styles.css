@@ -1,0 +1,143 @@
+/* Dark portfolio styles approximating the screenshot */
+:root{
+  --bg:#141419;
+  --panel:#0f1112;
+  --muted:#9aa0a6;
+  --accent:#2ad48a;
+  --embed:#12ff98;
+  --notgood:#ff4d4d;
+  --unavailable:#ff4d4d;
+  --policyc:#dc6363;
+  --rule:#2b2b2b;
+}
+*{box-sizing:border-box}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #070707);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #e6e9eb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none; /* Removes the underline */
+    color: var(--embed);        /* Makes the link inherit the color of its parent text */
+}
+
+.card-link {
+    text-decoration: none; /* Removes underline from text inside */
+    color: inherit;        /* Keeps your original text colors */
+}
+
+.group-grid {
+    margin-top: 20px;
+    display: grid;
+    /* Sets up automatic columns that match the 420px max-width of your code cards */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 420px));
+    gap: 20px;
+}
+
+/* Forces the text container and the icon to stay on the same row */
+.group-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%; /* Allows it to occupy full width of its grid cell */
+    height: 100%; /* Ensures consistent card heights if grid rows expand */
+}
+
+/* Prevents the card text from shrinking or squishing */
+.card-text {
+    flex: 1;
+}
+
+/* Adjusts the sizing footprint of the icon */
+.group-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevents the image from changing size */
+}
+
+.page-rule{border:0;height:2px;background:transparent;box-shadow:inset 0 -1px 0 var(--rule);}
+.container{max-width:1200px;margin:28px auto;padding:20px}
+.title{font-size:26px;margin:6px 0 6px 0;font-weight:700}
+.status{color:var(--muted);margin-bottom:18px}
+.available{color:var(--accent);font-weight:600}
+.unavailable{color:var(--unavailable);font-weight:600}
+.notgood{color:var(--notgood);font-weight:600}
+
+.layout{display:grid;grid-template-columns:420px 1fr;gap:36px;align-items:start}
+.left h2{margin-top:0}
+.about{color:var(--muted);line-height:1.5}
+.lead{font-weight:600;margin-bottom:6px}
+.skills{color:var(--muted);list-style:disc;margin-left:18px}
+.policies{color:var(--policyc);list-style:circle;margin-left:18px;font-size:25px}
+.policies li{margin-bottom:12px}
+
+.right{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.code-card{width:100%;background:linear-gradient(180deg,#121217,#0c0c0d);border-radius:6px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+.code-card.small{max-width:420px}
+pre{margin:0;overflow:auto;color:#d6dde8}
+code{font-family:SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:13px;display:block}
+
+/* Media card (image placeholders for code screenshots) */
+.media-card{background:linear-gradient(180deg,#0f1112,#0b0b0d);border-radius:6px;padding:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(0,0,0,0.6);}
+.media-card.small{max-width:420px}
+.code-image{display:block;width:100%;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.03)}
+.caption{color:var(--muted);font-size:13px;margin:8px 0 0 0}
+
+/* Responsive YouTube embed */
+.showcases {
+    margin-top: 32px;
+    
+    /* 1. Turn on Grid */
+    display: grid; 
+    
+    /* 2. Define the columns: automatically responsive cards, minimum 450px wide */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+    
+    /* 3. Space out the elements from each other (row gap, column gap) */
+    gap: 24px; 
+}
+.showcases h2 {
+    margin: 0 0 12px 0;
+    /* 4. Make sure the heading spans across all grid columns instead of getting squeezed */
+    grid-column: 1 / -1; 
+}
+.showcase-item{margin-bottom:28px}
+.showcase-title{font-weight:700;margin:8px 0;color:#e6e9eb}
+
+.video-card {
+    background: linear-gradient(180deg, #0f1112, #0b0b0d);
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    
+    /* Ensure the cards take full width of their grid cell */
+    width: max-content; 
+    box-sizing: border-box; 
+}
+.video-card iframe {
+    display: block;  /* Removes the default inline whitespace/gap at the bottom */
+    max-width: 100%; /* Prevents it from breaking out of smaller screens */
+}
+
+/* .video-card.small{max-width:500px} */
+
+/* responsive */
+@media (max-width:880px){
+  .layout{grid-template-columns:1fr;}
+  .left{order:2}
+  .right{order:1}
+}
